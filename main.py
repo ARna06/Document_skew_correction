@@ -3,7 +3,7 @@ from Postprocessings import *
 import matplotlib.pyplot as plt
 from scipy.ndimage import rotate
 
-path = "Inputs/IMG_20231102_094154.jpg"
+path = "Image/Path/Here"
 image = plt.imread(path)
 
 binary_image = Image_pre_processings(image)
