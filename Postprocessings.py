@@ -92,10 +92,10 @@ def detected_lines(img, indicies, rhos, thetas):
         plt.plot(x_values, y_values)
         plt.show()
 
-def skewed_angle(img):
+def skewed_angle(img, num_peaks):
 
     A, rhos, thetas = equivalent_space(img)
-    indices, Equiv = voting(A, 6, nhood_size=11)
+    indices, Equiv = voting(A, num_peaks, nhood_size=11)
 
     theta = []
     for i in range(len(indices)):
