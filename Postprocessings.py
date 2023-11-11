@@ -95,7 +95,7 @@ def detected_lines(img, indicies, rhos, thetas):
 def skewed_angle(img):
 
     A, rhos, thetas = equivalent_space(img)
-    indices, Equiv = voting(A, 3, nhood_size=11)
+    indices, Equiv = voting(A, 6, nhood_size=11)
 
     theta = []
     for i in range(len(indices)):
