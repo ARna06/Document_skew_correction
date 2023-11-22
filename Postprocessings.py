@@ -28,8 +28,8 @@ def voting(H, num_peaks, threshold=0, nhood_size=3):
     indices = []
     H1 = np.copy(H)
     for i in range(num_peaks):
-        idx = np.argmax(H1) # find argmax in flattened array
-        H1_idx = np.unravel_index(idx, H1.shape) # remap to shape of H
+        idx = np.argmax(H1) 
+        H1_idx = np.unravel_index(idx, H1.shape) 
         indices.append(H1_idx)
 
         idx_y, idx_x = H1_idx
@@ -57,40 +57,6 @@ def voting(H, num_peaks, threshold=0, nhood_size=3):
                     H[y, x] = 255
 
     return indices, H
-
-def plot_equivalent_space(H, plot_title='Hough Accumulator Plot'):
-
-    fig = plt.figure(figsize=(10, 10))
-    fig.canvas.set_window_title(plot_title)
-
-    plt.imshow(H, cmap='jet')
-
-    plt.xlabel('Theta Direction'), plt.ylabel('Rho Direction')
-    plt.tight_layout()
-    plt.show()
-
-def detected_lines(img, indicies, rhos, thetas):
-
-    for i in range(len(indicies)):
-
-        rho = rhos[indicies[i][0]]
-        theta = thetas[indicies[i][1]]
-        a = np.cos(theta)
-        b = np.sin(theta)
-        x0 = a*rho
-        y0 = b*rho
-
-        x1 = int(x0 + 1000*(-b))
-        y1 = int(y0 + 1000*(a))
-        x2 = int(x0 - 1000*(-b))
-        y2 = int(y0 - 1000*(a))
-
-        x_values = [x1, x2]
-        y_values = [y1, y2]
-
-        plt.close('all')
-        plt.plot(x_values, y_values)
-        plt.show()
 
 def skewed_angle(img, num_peaks):
 
